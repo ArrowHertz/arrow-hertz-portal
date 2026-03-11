@@ -71,16 +71,19 @@ Arrow Hertz Seller Dashboard
 <div class="card">
 <h3>Add Spare Part</h3>
 
-<input type="text" placeholder="Product Name">
+<input id="pname" type="text" placeholder="Product Name">
 
-<input type="text" placeholder="Brand">
+<input id="brand" type="text" placeholder="Brand">
 
-<input type="number" placeholder="Price">
+<input id="price" type="number" placeholder="Price">
 
-<input type="number" placeholder="Stock Quantity">
+<input id="stock" type="number" placeholder="Stock Quantity">
 
-<button>Add Product</button>
+<button onclick="addProduct()">Add Product</button>
 
+<h3>Product List</h3>
+<ul id="productList"></ul>
+  
 </div>
 
 <div class="card">
@@ -89,6 +92,32 @@ Arrow Hertz Seller Dashboard
 </div>
 
 </div>
+<script>
 
+function addProduct(){
+
+let name=document.getElementById("pname").value;
+let brand=document.getElementById("brand").value;
+let price=document.getElementById("price").value;
+let stock=document.getElementById("stock").value;
+
+let list=document.getElementById("productList");
+
+let item=document.createElement("li");
+
+item.innerHTML = name + " | " + brand + " | ₹" + price + " | Stock: " + stock;
+
+list.appendChild(item);
+
+/* inputs clear after adding product */
+
+document.getElementById("pname").value="";
+document.getElementById("brand").value="";
+document.getElementById("price").value="";
+document.getElementById("stock").value="";
+
+}
+
+</script>
 </body>
 </html>
