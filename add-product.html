@@ -1,19 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Add Product - Arrow Hertz</title>
+</head>
+
+<body>
+
 <h2>Add Product</h2>
 
-<form>
+<input id="name" placeholder="Product Name"><br><br>
+<input id="price" placeholder="Price"><br><br>
+<input id="stock" placeholder="Stock"><br><br>
 
-<input type="text" placeholder="Product Name">
+<button onclick="saveProduct()">Add Product</button>
 
-<input type="text" placeholder="Category">
+<script>
 
-<input type="number" placeholder="Price">
+function saveProduct(){
 
-<input type="number" placeholder="Stock">
+let name=document.getElementById("name").value;
+let price=document.getElementById("price").value;
+let stock=document.getElementById("stock").value;
 
-<input type="file">
+let products = JSON.parse(localStorage.getItem("products")) || [];
 
-<textarea placeholder="Description"></textarea>
+products.push({
+name:name,
+price:price,
+stock:stock
+});
 
-<button>Add Product</button>
+localStorage.setItem("products",JSON.stringify(products));
 
-</form>
+alert("Product Added");
+
+}
+
+</script>
+
+</body>
+</html>
