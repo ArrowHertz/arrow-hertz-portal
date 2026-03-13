@@ -24,18 +24,29 @@ li.innerHTML = `
 <img src="${p.image}" width="60">
 ${p.name} | ₹${p.price} | Stock: ${p.stock}
 
-<button onclick="deleteProduct(${index})">
-Delete
+<button onclick="editProduct(${index})">
+Edit
 </button>
-`;
 
 list.appendChild(li);
 
 });
 
-function deleteProduct(i){
+function editProduct(i){
 
-products.splice(i,1);
+let newName = prompt("Enter new product name",products[i].name);
+
+let newPrice = prompt("Enter new price",products[i].price);
+
+let newStock = prompt("Enter new stock",products[i].stock);
+
+if(newName && newPrice && newStock){
+
+products[i].name = newName;
+
+products[i].price = newPrice;
+
+products[i].stock = newStock;
 
 localStorage.setItem("products",JSON.stringify(products));
 
@@ -43,6 +54,7 @@ location.reload();
 
 }
 
+}
 </script>
 
 </body>
