@@ -87,7 +87,16 @@ container.appendChild(card);
 
 function orderProduct(name){
 
-alert("Order placed for "+name);
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+orders.push({
+product:name,
+status:"New Order"
+});
+
+localStorage.setItem("orders",JSON.stringify(orders));
+
+alert("Order placed successfully");
 
 }
 
