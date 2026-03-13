@@ -16,15 +16,32 @@ let products = JSON.parse(localStorage.getItem("products")) || [];
 
 let list=document.getElementById("productList");
 
-products.forEach(function(p){
+products.forEach(function(p,index){
 
 let li=document.createElement("li");
 
-li.innerHTML = p.name + " | ₹" + p.price + " | Stock: " + p.stock;
+li.innerHTML = `
+<img src="${p.image}" width="60">
+${p.name} | ₹${p.price} | Stock: ${p.stock}
+
+<button onclick="deleteProduct(${index})">
+Delete
+</button>
+`;
 
 list.appendChild(li);
 
 });
+
+function deleteProduct(i){
+
+products.splice(i,1);
+
+localStorage.setItem("products",JSON.stringify(products));
+
+location.reload();
+
+}
 
 </script>
 
