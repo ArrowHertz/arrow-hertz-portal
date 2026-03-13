@@ -63,7 +63,11 @@ Arrow Hertz Marketplace
 </div>
 
 <script>
-
+  
+if(localStorage.getItem("customerLogin")!="true"){
+alert("Please login first");
+window.location.href="customer-login.html";
+}
 let products = JSON.parse(localStorage.getItem("products")) || [];
 
 let container=document.getElementById("productList");
@@ -87,10 +91,20 @@ container.appendChild(card);
 
 function orderProduct(name){
 
+let cname = prompt("Enter Your Name");
+let caddress = prompt("Enter Delivery Address");
+
+if(!cname || !caddress){
+alert("Order cancelled");
+return;
+}
+
 let orders = JSON.parse(localStorage.getItem("orders")) || [];
 
 orders.push({
 product:name,
+customer:cname,
+address:caddress,
 status:"New Order"
 });
 
