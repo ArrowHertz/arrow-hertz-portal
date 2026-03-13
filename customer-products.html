@@ -42,28 +42,6 @@ background:#0284c7;
 }
 
 </style>
-Step 2 — Product container change చేయాలి
-
-ఈ line find చేయి:
-
-<div id="productList"></div>
-
-replace with:
-
-<div id="productList" class="grid"></div>
-Step 3 — Product card update చేయాలి
-
-card.innerHTML code replace చేయి:
-
-card.innerHTML = `
-<img src="${p.image}">
-<h3>${p.name}</h3>
-<p>Price : ₹${p.price}</p>
-<p>Stock : ${p.stock}</p>
-<button onclick="orderProduct('${p.name}')">Order</button>
-`;
-
-</style>
 
 </head>
 
@@ -83,7 +61,7 @@ style="padding:10px;width:80%;margin:20px;">
 
 <h2>Available Products</h2>
 
-<div id="productList"></div>
+<div id="productList" class="grid"></div>
 
 </div>
 
@@ -104,6 +82,7 @@ let card=document.createElement("div");
 card.className="card";
 
 card.innerHTML = `
+<img src="${p.image}">
 <h3>${p.name}</h3>
 <p>Price : ₹${p.price}</p>
 <p>Stock : ${p.stock}</p>
