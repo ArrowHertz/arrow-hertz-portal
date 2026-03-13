@@ -10,9 +10,12 @@
 
 <input id="name" placeholder="Product Name"><br><br>
 <input id="price" placeholder="Price"><br><br>
+<input type="file" id="image"><br><br>
 <input id="stock" placeholder="Stock"><br><br>
 
 <button onclick="saveProduct()">Add Product</button>
+
+<script>
 
 <script>
 
@@ -22,17 +25,28 @@ let name=document.getElementById("name").value;
 let price=document.getElementById("price").value;
 let stock=document.getElementById("stock").value;
 
+let file=document.getElementById("image").files[0];
+
+let reader=new FileReader();
+
+reader.onload=function(){
+
 let products = JSON.parse(localStorage.getItem("products")) || [];
 
 products.push({
 name:name,
 price:price,
-stock:stock
+stock:stock,
+image:reader.result
 });
 
 localStorage.setItem("products",JSON.stringify(products));
 
 alert("Product Added");
+
+}
+
+reader.readAsDataURL(file);
 
 }
 
