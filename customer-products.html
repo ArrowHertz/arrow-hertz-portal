@@ -8,30 +8,24 @@
 
 <style>
 
-body{
-font-family:Arial;
-background:#020617;
-color:white;
-margin:0;
-}
-
-header{
-background:#1e293b;
-padding:15px;
-text-align:center;
-font-size:22px;
-color:#38bdf8;
-}
-
-.container{
-padding:30px;
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
 }
 
 .card{
 background:#1e293b;
-padding:20px;
-margin-bottom:20px;
+padding:15px;
 border-radius:8px;
+text-align:center;
+}
+
+.card img{
+width:100%;
+height:150px;
+object-fit:cover;
+border-radius:6px;
 }
 
 button{
@@ -46,6 +40,28 @@ cursor:pointer;
 button:hover{
 background:#0284c7;
 }
+
+</style>
+Step 2 — Product container change చేయాలి
+
+ఈ line find చేయి:
+
+<div id="productList"></div>
+
+replace with:
+
+<div id="productList" class="grid"></div>
+Step 3 — Product card update చేయాలి
+
+card.innerHTML code replace చేయి:
+
+card.innerHTML = `
+<img src="${p.image}">
+<h3>${p.name}</h3>
+<p>Price : ₹${p.price}</p>
+<p>Stock : ${p.stock}</p>
+<button onclick="orderProduct('${p.name}')">Order</button>
+`;
 
 </style>
 
