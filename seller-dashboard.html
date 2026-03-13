@@ -87,6 +87,13 @@ Arrow Hertz Seller Dashboard
 <div class="container">
 
 <div class="card">
+
+<h3>Total Earnings</h3>
+
+<h2 id="earnings">₹0</h2>
+
+</div>
+  
 <h3>Add Spare Part</h3>
 
 <input id="pname" type="text" placeholder="Product Name">
@@ -110,8 +117,27 @@ Arrow Hertz Seller Dashboard
 </div>
 
 </div>
+
 <script>
 
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+let total = 0;
+
+orders.forEach(function(o){
+
+if(o.status=="Delivered"){
+
+total += 1000; 
+
+}
+
+});
+
+document.getElementById("earnings").innerText="₹"+total;
+
+</script>
+  
 function addProduct(){
 
 let name=document.getElementById("pname").value;
