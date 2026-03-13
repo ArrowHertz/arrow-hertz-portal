@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Arrow Hertz Products</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#020617;
+color:white;
+margin:0;
+}
+
+header{
+background:#1e293b;
+padding:15px;
+text-align:center;
+font-size:22px;
+color:#38bdf8;
+}
+
+.container{
+padding:30px;
+}
+
+.card{
+background:#1e293b;
+padding:20px;
+margin-bottom:20px;
+border-radius:8px;
+}
+
+button{
+padding:8px 15px;
+background:#38bdf8;
+border:none;
+border-radius:5px;
+color:white;
+cursor:pointer;
+}
+
+button:hover{
+background:#0284c7;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+Arrow Hertz Marketplace
+</header>
+
+<div class="container">
+
+<h2>Available Products</h2>
+
+<div id="productList"></div>
+
+</div>
+
+<script>
+
+let products = JSON.parse(localStorage.getItem("products")) || [];
+
+let container=document.getElementById("productList");
+
+products.forEach(function(p){
+
+let card=document.createElement("div");
+
+card.className="card";
+
+card.innerHTML = `
+<h3>${p.name}</h3>
+<p>Price : ₹${p.price}</p>
+<p>Stock : ${p.stock}</p>
+<button onclick="orderProduct('${p.name}')">Order</button>
+`;
+
+container.appendChild(card);
+
+});
+
+function orderProduct(name){
+
+alert("Order placed for "+name);
+
+}
+
+</script>
+
+</body>
+</html>
