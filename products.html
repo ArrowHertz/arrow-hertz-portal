@@ -1,19 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Products - Arrow Hertz</title>
+</head>
+
+<body>
+
 <h2>Your Products</h2>
 
-<table>
+<ul id="productList"></ul>
 
-<tr>
-<th>Name</th>
-<th>Price</th>
-<th>Stock</th>
-<th>Status</th>
-</tr>
+<script>
 
-<tr>
-<td>Mobile Display</td>
-<td>1500</td>
-<td>20</td>
-<td>Active</td>
-</tr>
+let products = JSON.parse(localStorage.getItem("products")) || [];
 
-</table>
+let list=document.getElementById("productList");
+
+products.forEach(function(p){
+
+let li=document.createElement("li");
+
+li.innerHTML = p.name + " | ₹" + p.price + " | Stock: " + p.stock;
+
+list.appendChild(li);
+
+});
+
+</script>
+
+</body>
+</html>
