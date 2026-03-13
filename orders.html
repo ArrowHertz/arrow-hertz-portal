@@ -2,29 +2,113 @@
 <html>
 <head>
 <title>Orders - Arrow Hertz</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#020617;
+color:white;
+margin:0;
+}
+
+header{
+background:#1e293b;
+padding:15px;
+text-align:center;
+font-size:22px;
+color:#38bdf8;
+}
+
+.container{
+padding:30px;
+}
+
+.card{
+background:#1e293b;
+padding:20px;
+margin-bottom:15px;
+border-radius:8px;
+}
+
+button{
+padding:8px 15px;
+margin-right:10px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+.accept{
+background:#22c55e;
+color:white;
+}
+
+.reject{
+background:#ef4444;
+color:white;
+}
+
+</style>
+
 </head>
 
 <body>
 
-<h2>Customer Orders</h2>
+<header>
+Arrow Hertz Orders
+</header>
 
-<ul id="orderList"></ul>
+<div class="container">
+
+<div id="orderList"></div>
+
+</div>
 
 <script>
 
 let orders = JSON.parse(localStorage.getItem("orders")) || [];
 
-let list=document.getElementById("orderList");
+let container = document.getElementById("orderList");
 
-orders.forEach(function(o){
+orders.forEach(function(o,index){
 
-let li=document.createElement("li");
+let card = document.createElement("div");
 
-li.innerHTML = o.product + " | Status: " + o.status;
+card.className="card";
 
-list.appendChild(li);
+card.innerHTML = `
+<h3>${o.product}</h3>
+<p>Status : ${o.status}</p>
+
+<button class="accept" onclick="acceptOrder(${index})">Accept</button>
+
+<button class="reject" onclick="rejectOrder(${index})">Reject</button>
+`;
+
+container.appendChild(card);
 
 });
+
+function acceptOrder(i){
+
+orders[i].status="Accepted";
+
+localStorage.setItem("orders",JSON.stringify(orders));
+
+location.reload();
+
+}
+
+function rejectOrder(i){
+
+orders[i].status="Rejected";
+
+localStorage.setItem("orders",JSON.stringify(orders));
+
+location.reload();
+
+}
 
 </script>
 
