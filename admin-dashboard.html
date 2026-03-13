@@ -67,7 +67,13 @@ products.forEach(function(p){
 
 let li=document.createElement("li");
 
-li.innerHTML = p.name + " | ₹" + p.price + " | Stock: " + p.stock;
+li.innerHTML = `
+${p.name} | ₹${p.price} | Stock: ${p.stock}
+
+<button onclick="deleteProduct(${index})">
+Delete
+</button>
+`;
 
 plist.appendChild(li);
 
@@ -88,7 +94,18 @@ li.innerHTML = o.product + " | Status: " + o.status;
 olist.appendChild(li);
 
 });
+  
+function deleteProduct(i){
 
+let products = JSON.parse(localStorage.getItem("products")) || [];
+
+products.splice(i,1);
+
+localStorage.setItem("products",JSON.stringify(products));
+
+location.reload();
+
+}
 </script>
 
 </body>
