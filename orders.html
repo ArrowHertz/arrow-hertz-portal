@@ -1,5 +1,32 @@
-Order ID
-Product
-Customer
-Address
-Status
+<!DOCTYPE html>
+<html>
+<head>
+<title>Orders - Arrow Hertz</title>
+</head>
+
+<body>
+
+<h2>Customer Orders</h2>
+
+<ul id="orderList"></ul>
+
+<script>
+
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+let list=document.getElementById("orderList");
+
+orders.forEach(function(o){
+
+let li=document.createElement("li");
+
+li.innerHTML = o.product + " | Status: " + o.status;
+
+list.appendChild(li);
+
+});
+
+</script>
+
+</body>
+</html>
