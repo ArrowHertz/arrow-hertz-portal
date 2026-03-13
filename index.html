@@ -1,67 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Arrow Hertz Portal</title>
+
+<title>Arrow Hertz Marketplace</title>
 
 <style>
+
 body{
 font-family:Arial;
-background:#0f172a;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
+background:#020617;
 color:white;
-}
-
-.container{
-background:#1e293b;
-padding:40px;
-border-radius:10px;
+margin:0;
 text-align:center;
-width:320px;
 }
 
-h1{
+header{
+background:#1e293b;
+padding:20px;
+font-size:28px;
 color:#38bdf8;
 }
 
+.container{
+padding:50px;
+}
+
 button{
-width:100%;
-padding:12px;
-margin-top:10px;
+padding:15px 30px;
+margin:15px;
+font-size:16px;
 border:none;
-border-radius:5px;
+border-radius:6px;
 background:#38bdf8;
 color:white;
-font-size:16px;
 cursor:pointer;
 }
 
 button:hover{
 background:#0284c7;
 }
+
 </style>
 
 </head>
 
 <body>
 
+<header>
+Arrow Hertz Marketplace
+</header>
+
 <div class="container">
 
-<h1>Arrow Hertz</h1>
+<h2>Welcome to Arrow Hertz</h2>
 
-<p>Seller Portal Login</p>
+<a href="customer-login.html">
+<button>Customer</button>
+</a>
 
-<button onclick="location.href='seller-login.html'">
-Seller Login
-</button>
+<a href="seller-login.html">
+<button>Seller</button>
+</a>
 
-<button onclick="location.href='admin-login.html'">
-Admin Login
-</button>
+<a href="rider-panel.html">
+<button>Rider</button>
+</a>
+
+<a href="admin-login.html">
+<button>Admin</button>
+</a>
 
 </div>
 
