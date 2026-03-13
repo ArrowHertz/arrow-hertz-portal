@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Customer Login - Arrow Hertz</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#020617;
+color:white;
+text-align:center;
+padding-top:100px;
+}
+
+input{
+padding:10px;
+margin:10px;
+width:250px;
+border:none;
+border-radius:5px;
+}
+
+button{
+padding:10px 20px;
+background:#38bdf8;
+border:none;
+border-radius:5px;
+color:white;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>Customer Login</h2>
+
+<input id="email" placeholder="Email"><br>
+
+<input id="pass" type="password" placeholder="Password"><br>
+
+<button onclick="login()">Login</button>
+
+<script>
+
+function login(){
+
+let email=document.getElementById("email").value;
+let pass=document.getElementById("pass").value;
+
+if(email && pass){
+
+localStorage.setItem("customerLogin","true");
+
+alert("Login Successful");
+
+window.location.href="customer-products.html";
+
+}
+
+else{
+
+alert("Enter details");
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
