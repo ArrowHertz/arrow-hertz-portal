@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rider Panel - Arrow Hertz</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#020617;
+color:white;
+margin:0;
+}
+
+header{
+background:#1e293b;
+padding:15px;
+text-align:center;
+font-size:22px;
+color:#38bdf8;
+}
+
+.container{
+padding:30px;
+}
+
+.card{
+background:#1e293b;
+padding:20px;
+margin-bottom:15px;
+border-radius:8px;
+}
+
+button{
+padding:8px 15px;
+border:none;
+border-radius:5px;
+background:#38bdf8;
+color:white;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+Arrow Hertz Rider Panel
+</header>
+
+<div class="container">
+
+<div id="orderList"></div>
+
+</div>
+
+<script>
+
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+let container=document.getElementById("orderList");
+
+orders.forEach(function(o,index){
+
+let card=document.createElement("div");
+
+card.className="card";
+
+card.innerHTML = `
+<h3>${o.product}</h3>
+<p>Customer : ${o.customer}</p>
+<p>Address : ${o.address}</p>
+<p>Status : ${o.status}</p>
+
+<button onclick="deliverOrder(${index})">
+Mark Delivered
+</button>
+`;
+
+container.appendChild(card);
+
+});
+
+function deliverOrder(i){
+
+orders[i].status="Delivered";
+
+localStorage.setItem("orders",JSON.stringify(orders));
+
+location.reload();
+
+}
+
+</script>
+
+</body>
+</html>
